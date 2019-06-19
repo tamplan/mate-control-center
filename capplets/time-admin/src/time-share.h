@@ -1,19 +1,23 @@
-/*   time-admin
-*   Copyright (C) 2018  zhuyaliang https://github.com/zhuyaliang/
-*
-*   This program is free software: you can redistribute it and/or modify
-*   it under the terms of the GNU General Public License as published by
-*   the Free Software Foundation, either version 3 of the License, or
-*   (at your option) any later version.
-
-*   This program is distributed in the hope that it will be useful,
-*   but WITHOUT ANY WARRANTY; without even the implied warranty of
-*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*   GNU General Public License for more details.
-
-*   You should have received a copy of the GNU General Public License
-*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
+/* Time and Date Manager. Set the time and date on your system
+ *
+ * Copyright (C) 2018, 2019 zhuyaliang
+ * Copyright (C) 2019 MATE Developers
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Author: zhuyaliang https://github.com/zhuyaliang/
+ */
 
 #ifndef __TIME_SHARE_H__
 #define __TIME_SHARE_H__
@@ -33,16 +37,14 @@
 #include <libintl.h>
 #include <gio/gio.h>
 
-#define TYPEMSG    "<span foreground='red'font_desc='13'>%s </span>"
-#define ERROR      1
-#define WARING     2
-#define INFOR      3
-#define QUESTION   4
+#define ERROR            1
+#define WARING           2
+#define INFOR            3
+#define QUESTION         4
 #define QUESTIONNORMAL   5
 
 
-GtkWidget *WindowLogin;
-int        TimeoutFlag;
+int TimeoutFlag;
 typedef struct
 {
     GtkWidget        *MainWindow;
@@ -50,9 +52,9 @@ typedef struct
     GtkWidget        *MinuteSpin;
     GtkWidget        *SecondSpin;
     GtkWidget        *TimeZoneButton;
+    GtkWidget        *TimeZoneEntry;
     GtkWidget        *NtpSyncSwitch;
     GtkWidget        *Calendar;
-    GtkWidget        *CloseButton;
     GtkWidget        *SaveButton;
     int               UpdateTimeId;
     int               ApplyId;
@@ -68,7 +70,7 @@ typedef struct
     GtkWidget        *map;
     GtkListStore     *CityListStore;
     GtkTreeModelSort *CityModelSort;
-	GtkWidget        *ButtonLock;
+    GtkWidget        *ButtonLock;
     GPermission      *Permission;
 
 }TimeAdmin;
@@ -76,10 +78,6 @@ typedef struct
 int          MessageReport               (const char  *Title,
                                           const char  *Msg,
                                           int          nType);
-
-void         SetLableFontType            (GtkWidget   *Lable,
-                                          int          FontSzie,
-                                          const char  *Word);
 
 void         QuitApp                     (TimeAdmin   *ta);
 
